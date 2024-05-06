@@ -1703,3 +1703,26 @@ form [type='radio'] {
     align-content: center;
   }
 }
+
+
+body {
+  background-color: #343a40; /* dark background */
+  color: #f8f9fa; /* light text */
+}
+
+nav ul {
+  list-style-type: none; /* remove bullet points */
+  padding: 0; /* remove padding */
+}
+
+nav ul li {
+  display: inline; /* display list items in a row */
+  margin-right: 10px; /* add some space between items */
+}
+
+main {
+  margin-top: 20px; /* add some space at the top */
+  max-width: 960px; /* limit the width */
+  margin-left: auto; /* center the container */
+  margin-right: auto; /* center the container */
+}
