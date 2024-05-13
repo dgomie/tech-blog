@@ -10,9 +10,7 @@
 
 <body class="bg-primary text-light">
  <nav class="bg-dark p-4">
-  <div id="site-title">
-  <h1 class="title"><strong>The Tech Blog</strong></h1>
-  </div>
+  <div class="m-1">
   <a class="p-1" href="/">Home</a>
   <a class="p-1" href="/dashboard">Dashboard</a>
   {{#if loggedIn}}
@@ -21,6 +19,10 @@
     <a class="p-1" href="/login">Login</a>
   {{/if}}</li>
   </ul>
+  </div>
+  <div id="site-title">
+  <h class="logo"><strong>{{logoTitle}}</strong></h1>
+  </div>
  </nav>
 
   <main class="container container-fluid mt-5">

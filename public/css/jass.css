@@ -1740,6 +1740,7 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: #065b83;
+  margin-bottom: 5px;
 }
 
 .title {
@@ -1762,6 +1763,29 @@ main {
 #site-title {
   background-color: #065b83;
   border-radius: 10px;
-  width: 15%;
+  width: 35%;
+  text-align: center;
   /* margin: 10px; */
 }
+
+#title, #content, #submit-btn{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  align-items: center;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.post-label {
+  margin-left: 10px;
+}
+
+#submit-btn {
+  background-color: #484848;
+  color: white;
+}
+
+.logo {
+ font-size: 30px;
+}
+

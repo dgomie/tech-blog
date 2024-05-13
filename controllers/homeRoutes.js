@@ -1,5 +1,8 @@
+const withAuth = require('../utils/auth')
+
 const router = require('express').Router();
 const { User, Post } = require('../models');
+
 
 router.get('/', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
@@ -17,6 +20,7 @@ router.get('/', async (req, res) => {
     );
   res.render('homepage', {
     title: 'Tech Blog',
+    logoTitle: "The Tech Blog",
     loggedIn: req.session.loggedIn,
     posts
   });
@@ -33,7 +37,8 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login", {
-    title: "Login"
+    title: "Login",
+    logoTitle: "The Tech Blog"
   });
 });
 
@@ -43,23 +48,23 @@ router.get("/signup", (req, res) => {
     return;
   }
   res.render("signup", {
-    title: "Sign Up"
+    title: "Sign Up",
+    logoTitle: "The Tech Blog"
   });
 });
 
 router.get("/dashboard", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect("/login")
-  }
   res.render('dashboard', {
     title: 'Dashboard',
+    logoTitle: "Your Dashboard",
     loggedIn: req.session.loggedIn
   })
 })
 
 router.get("/logout", (req, res) => {
     res.render("logout", {
-      title: "Log Out",
+      title: "Log out",
+      logoTitle: "The Tech Blog",
       loggedIn: req.session.loggedIn
     });
 })
