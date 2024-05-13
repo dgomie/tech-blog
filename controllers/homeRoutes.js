@@ -22,14 +22,15 @@ router.get("/login", (req, res) => {
 router.get("/dashboard", (req, res) => {
   res.render('dashboard', {
     title: 'Dashboard',
-    loggedIn: req.session.loggedIn,
+    loggedIn: req.session.loggedIn
   })
 })
 
 router.get("/logout", (req, res) => {
-  res.render('logout', {
-    title: 'Goodbye',
-  })
+    res.render("logout", {
+      title: "Log Out",
+      loggedIn: req.session.loggedIn
+    });
 })
 
 
