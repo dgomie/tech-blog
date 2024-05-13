@@ -1789,3 +1789,8 @@ main {
  font-size: 30px;
 }
 
+#post-btn {
+  display: block;
+  margin: 0 auto;
+}
+

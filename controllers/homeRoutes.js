@@ -53,7 +53,7 @@ router.get("/signup", (req, res) => {
   });
 });
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard",withAuth, (req, res) => {
   res.render('dashboard', {
     title: 'Dashboard',
     logoTitle: "Your Dashboard",
