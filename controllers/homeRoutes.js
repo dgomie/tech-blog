@@ -26,5 +26,11 @@ router.get("/dashboard", (req, res) => {
   })
 })
 
+router.get("/logout", (req, res) => {
+  res.render('logout', {
+    title: 'Goodbye',
+  })
+})
+
 
 module.exports = router;
