@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/dashboard");
     return;
   }
   res.render("login", {
@@ -30,7 +30,20 @@ router.get("/login", (req, res) => {
   });
 });
 
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("signup", {
+    title: "Sign Up"
+  });
+});
+
 router.get("/dashboard", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login")
+  }
   res.render('dashboard', {
     title: 'Dashboard',
     loggedIn: req.session.loggedIn
