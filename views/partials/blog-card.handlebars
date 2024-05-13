@@ -1,7 +1,7 @@
 <div class="blog-post-card">
   <div class="card-header">
     <h2 class="title">{{this.title}}</h2>
-    <p class="user_id">{{this.user.username}}</p>
+    <p class="user_id">Posted by {{this.user.username}} on {{formatDate this.postDate}}</p>
   </div>
   <p>{{this.description}}</p>
 </div>

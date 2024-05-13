@@ -1739,7 +1739,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c6a6a;
+  background-color: #065b83;
 }
 
 .title {
@@ -1757,4 +1757,11 @@ main {
 
 .blog-post-card p {
   padding: 5px;
+}
+
+#site-title {
+  background-color: #065b83;
+  border-radius: 10px;
+  width: 15%;
+  /* margin: 10px; */
 }
