@@ -29,4 +29,33 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  try{
+    const deletePost = await Post.destroy({where: {id: req.body.id }});
+    res.json(deletePost);
+  } catch (err) {
+    res.json(err);
+  }
+})
+
+router.put("/", async (req, res) => {
+  try{
+    const updatedPost = await Post.update(
+      {
+      title: req.body.title,
+      description: req.body.description
+      },
+      {
+        where: {
+          id: req.body.id,
+          user_id: req.body.user_id
+        }
+      }
+  )
+  res.json(updatedPost)
+  } catch (err) {
+    res.json(err)
+  }
+})
+
 module.exports = router;
