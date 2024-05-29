@@ -28,16 +28,16 @@ Post.init(
       defaultValue: Sequelize.NOW,
     },
     comment_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
-        model: 'Comment',
+        model: 'comment',
         key: "id"
       }
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'User',
+        model: 'user',
         key: 'id'
       }
     }

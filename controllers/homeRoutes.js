@@ -52,8 +52,8 @@ router.get("/signup", (req, res) => {
     logoTitle: "The Tech Blog"
   });
 });
-
-router.get("/dashboard",withAuth, (req, res) => {
+//withauth
+router.get("/dashboard", (req, res) => {
   res.render('dashboard', {
     title: 'Dashboard',
     logoTitle: "Your Dashboard",

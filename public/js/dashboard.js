@@ -1,8 +1,5 @@
-document.getElementById('post-btn').addEventListener('click', function() {
-    const formContainer = document.getElementById('form-container');
-  
-    const form = document.createElement('form');
-    form.innerHTML = `
+const form = document.createElement('form');
+form.innerHTML = `
     <div class="blog-post-card">
     <div class="card-header">
     <h2 class="title post-label">Create New Post</h2>
@@ -14,9 +11,14 @@ document.getElementById('post-btn').addEventListener('click', function() {
       <input id="submit-btn" type="submit" value="Create">
     </div>
     `;
+
+if (!document.querySelector(".blog-post-card")) {
+document.getElementById('post-btn').addEventListener('click', function() {
+    const formContainer = document.getElementById('form-container');
   
     formContainer.appendChild(form);
   });
+}
 
   document.getElementById('submit-btn').addEventListener('click', async function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
