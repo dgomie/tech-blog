@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post } = require("../../models");
 
+//get all posts
 router.get("/", async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -18,6 +19,29 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//get post by userId
+router.get("/:userId", async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+      where: {
+        id: req.params.userId
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+    const posts = dbPostData.map((post) => post.get({ plain: true }));
+    res.status(200).send(posts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 
 router.post("/", async (req, res) => {
