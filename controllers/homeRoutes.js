@@ -54,7 +54,7 @@ router.get("/signup", (req, res) => {
   });
 });
 //withauth
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
       where: {id: req.session.userId},
