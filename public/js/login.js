@@ -14,6 +14,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+      localStorage.setItem("userId", data.user.id)
       document.location.replace('/');
     } else {
       console.log(response)
@@ -40,6 +43,9 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+      localStorage.setItem("userId", data.user.id)
       document.location.replace('/dashboard');
     } else {
       console.log(response)
