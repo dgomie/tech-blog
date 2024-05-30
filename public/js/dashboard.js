@@ -1,3 +1,15 @@
+const blogPosts = document.querySelectorAll('blog-post');
+
+blogPosts.forEach((post) => {
+  post.addEventListener("click", function(event) {
+    event.preventDefault
+    const editForm = document.querySelector('.edit-form');
+
+// Remove the 'hidden' class
+  editForm.classList.remove('hidden');
+  })
+})
+
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('submit-btn').addEventListener('click', async function(event) {
       event.preventDefault(); // Prevent the form from submitting normally
