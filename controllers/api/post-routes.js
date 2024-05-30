@@ -25,7 +25,7 @@ router.get("/:userId", async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
       where: {
-        id: req.params.userId
+        user_id: req.params.userId
       },
       include: [
         {
