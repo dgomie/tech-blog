@@ -22,12 +22,12 @@ document.getElementById('post-btn').addEventListener('click', function() {
     
       const title = document.getElementById('title').value;
       const description = document.getElementById('content').value;
-      // const userId = req.session.userId;
+      const userId = localStorage.getItem('userId');
     
       const data = { 
         'title': title, 
-        'description': description
-        // 'user_id': userId
+        'description': description,
+        'user_id': userId
          };
     
       try {
@@ -45,6 +45,7 @@ document.getElementById('post-btn').addEventListener('click', function() {
     
         const postData = await response.json();
         console.log('Success:', postData);
+        location.reload()
       } catch (error) {
         console.error('Error:', error);
       }

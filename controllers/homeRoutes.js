@@ -54,12 +54,35 @@ router.get("/signup", (req, res) => {
   });
 });
 //withauth
-router.get("/dashboard", (req, res) => {
-  res.render('dashboard', {
-    title: 'Dashboard',
-    logoTitle: "Your Dashboard",
-    loggedIn: req.session.loggedIn
-  })
+router.get("/dashboard", async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+      where: {id: req.session.userId},
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+      order: [['postDate', 'DESC']],
+    });
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
+
+    console.log("posts data", posts)
+    res.render('dashboard', {
+      title: 'Dashboard',
+      logoTitle: "Your Dashboard",
+      loggedIn: req.session.loggedIn,
+      ...req.session,
+      posts
+    })
+} catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}  
+
 })
 
 router.get("/logout", (req, res) => {
