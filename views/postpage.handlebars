@@ -1,19 +1,32 @@
-{{> blog-card}}
-
 <div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl "><!--horizantil margin is just for display-->
    <div class="flex items-start px-4 py-6">
       <div class="w-full">
         <div class="flex justify-end">
          <div class="flex items-center justify-end">
-            <small class="text-xs text-gray-700">Posted by {{this.user.username}} on {{formatDate this.postDate}}</small>
+            <small class="text-xs text-gray-700">Posted by {{post.user.username}} on {{formatDate post.postDate}}</small>
          </div>
          </div>
          <h3 class="mt-3 text-gray-700 text-lg font-bold">
-            {{this.title}}
+            {{post.title}}
          </h3>
          <p class="mt-3 text-gray-700 text-md">
-            {{this.description}}
+            {{post.description}}
          </p>
       </div>
    </div>
 </div>
+
+
+{{#if loggedIn}}
+<div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl "><!--horizantil margin is just for display-->
+   <div class="flex items-start px-4 py-6">
+      <div class="w-full">
+      <div class="font-semibold my-1">Comment</div>
+      <textarea class="w-full"></textarea>
+      <div class="flex justify-center">
+      <button class="my-1 bg-teal-500 hover:bg-teal-600 text-white p-1 rounded w-full">Submit</button>
+      </div>
+      </div>
+   </div>
+</div>
+{{/if}}

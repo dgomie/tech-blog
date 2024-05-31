@@ -2,6 +2,7 @@ const withAuth = require('../utils/auth')
 
 const router = require('express').Router();
 const { User, Post } = require('../models');
+const { findAll } = require('../models/User');
 
 
 router.get('/', async (req, res) => {
@@ -83,15 +84,40 @@ router.get("/dashboard", withAuth, async (req, res) => {
 }  
 })
 
-//withauth
-router.get("/post/", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/dashboard");
-    return;
+
+router.get("/post/:id", async(req, res) => {
+  try {
+
+  const postData = await Post.findOne({where: {
+    id: req.params.id
+  },
+  include: [
+    {
+      model: User,
+      attributes: ['username'],
+    },
+  ]
+});
+
+    // Check if postData is not null
+    if (postData) {
+      const post = postData.get({ plain: true });
+
+      console.log("post", post)
+
+      res.render("postpage", {
+        title: "Post",
+        logoTitle: "The Tech Blog",
+        loggedIn: req.session.loggedIn,
+        post
+      });
+    } else {
+      res.status(404).json({ message: 'No post found with this id' });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-  res.render("postpage", {
-    
-  });
 });
 
 
