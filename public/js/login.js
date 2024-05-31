@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       const data = await response.json()
       console.log(data)
       localStorage.setItem("userId", data.user.id)
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       console.log(response)
       alert('Failed to log in.');

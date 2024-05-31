@@ -70,7 +70,6 @@ router.get("/dashboard", withAuth, async (req, res) => {
       post.get({ plain: true })
     );
 
-    console.log("posts data", posts)
     res.render('dashboard', {
       title: 'Dashboard',
       logoTitle: "Your Dashboard",
