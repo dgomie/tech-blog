@@ -81,8 +81,20 @@ router.get("/dashboard", withAuth, async (req, res) => {
   console.log(err);
   res.status(500).json(err);
 }  
-
 })
+
+//withauth
+router.get("/post/", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("postpage", {
+    
+  });
+});
+
+
 
 router.get("/logout", (req, res) => {
     res.render("logout", {
