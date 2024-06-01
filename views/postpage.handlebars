@@ -1,4 +1,4 @@
-<div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl "><!--horizantil margin is just for display-->
+<div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl ">
    <div class="flex items-start px-4 py-6">
       <div class="w-full">
         <div class="flex justify-end">
@@ -18,13 +18,14 @@
 
 
 {{#if loggedIn}}
-<div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl "><!--horizantil margin is just for display-->
-   <div class="flex items-start px-4 py-6">
+<div class="bg-gray-200 shadow-lg rounded-lg mx-4 md:mx-auto my-6 max-w-md md:max-w-2xl ">
       <div class="w-full">
-      <div class="font-semibold my-1">Comment</div>
-      <textarea class="w-full"></textarea>
+      <div class="flex justify-center m-1 font-semibold p-1">Comment</div>
       <div class="flex justify-center">
-      <button class="my-1 bg-teal-500 hover:bg-teal-600 text-white p-1 rounded w-full">Submit</button>
+      <textarea id="commentInput" class="w-11/12 my-1"></textarea>
+      </div>
+      <div class="flex justify-center">
+      <button id="submitComment" class="my-1 bg-teal-500 hover:bg-teal-600 text-white p-1 rounded w-11/12 my-3">Submit</button>
       </div>
       </div>
    </div>
@@ -32,3 +33,6 @@
 {{/if}}
 
 <div class="comments-container"></div>
+
+
+<script src="/js/comment.js"></script>

@@ -27,7 +27,6 @@ User.hasMany(Comment, {
     onDelete: 'CASCADE'
   });
   
-  // In your Comment model file
   Comment.belongsTo(User, {
     foreignKey: 'user_id',
   });
