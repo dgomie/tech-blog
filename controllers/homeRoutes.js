@@ -1,7 +1,7 @@
 const withAuth = require('../utils/auth')
 
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const { findAll } = require('../models/User');
 
 
@@ -85,11 +85,11 @@ router.get("/dashboard", withAuth, async (req, res) => {
 })
 
 
-router.get("/post/:id", async(req, res) => {
+router.get("/post/:postId", async(req, res) => {
   try {
 
   const postData = await Post.findOne({where: {
-    id: req.params.id
+    id: req.params.postId
   },
   include: [
     {
@@ -102,18 +102,40 @@ router.get("/post/:id", async(req, res) => {
     // Check if postData is not null
     if (postData) {
       const post = postData.get({ plain: true });
-
       console.log("post", post)
+      const commentData = await Comment.findAll({
+        where: {post_id: req.params.postId},
+        include: [
+          {
+            model: User,
+            attributes: ["username", "id"],
+          },
+          {
+            model: Post,
+            attributes: ["title", "description", "id"],
+          }
+        ],
+      })
+      if (commentData) {
 
-      res.render("postpage", {
-        title: "Post",
-        logoTitle: "The Tech Blog",
-        loggedIn: req.session.loggedIn,
-        post
-      });
-    } else {
-      res.status(404).json({ message: 'No post found with this id' });
-    }
+        const comments = commentData.map((comment)=> comment.get({plain: true}))
+
+        res.render("postpage", {
+          title: "Post",
+          logoTitle: "The Tech Blog",
+          loggedIn: req.session.loggedIn,
+          post,
+          comments
+        });
+      } else {
+        res.status(404).json({ message: 'No post found with this id' });
+      }
+
+      }
+
+     
+
+  
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

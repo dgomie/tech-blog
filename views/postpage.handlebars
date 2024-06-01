@@ -33,7 +33,9 @@
 {{/if}}
 
 <div class="comments-container">
-   {{> comments}}
+   {{#each comments}}
+   {{> commentCard}}
+   {{/each}}
 </div>
 
 

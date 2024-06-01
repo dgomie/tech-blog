@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             })
             .then(data => {
                 console.log(data);
-                // document.location.reload();
+                document.location.reload();
             })
             .catch(error => {
                 alert(error);
