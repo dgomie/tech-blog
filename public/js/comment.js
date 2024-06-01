@@ -3,13 +3,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
     submitBtn.addEventListener("click", function(event){
         event.preventDefault();
 
+        const div = document.querySelector('div[data-postId]');
+        const postId = div.getAttribute('data-postId');
+
         const comment = document.querySelector('#commentInput').value.trim();
         const userId = localStorage.getItem('userId')
 
         if (comment && userId) {
-            fetch('/', {
+            console.log(comment, userId, postId)
+            fetch('/api/comments/', {
                 method: 'POST',
-                body: JSON.stringify({ comment, userId }),
+                body: JSON.stringify({ 
+                    "content": comment, 
+                    "user_id": userId, 
+                    "post_id": postId,
+                }),
                 headers: { 'Content-Type': 'application/json' },
             })
             .then(response => {
